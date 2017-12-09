@@ -1,8 +1,15 @@
 #!/bin/bash
 
-if grep "$1" /etc/passwd
+USUARIO=$(grep "$1" /etc/passwd)
+
+if test $# -eq 0
 then
-	echo "O usuario existe"
+	echo "Informe um nome"
 else
-	echo "Nao existe"
+	if [ -n "$USUARIO" ]
+	then
+		echo "O usuario existe"
+	else
+		echo "Nao existe"
+	fi
 fi
